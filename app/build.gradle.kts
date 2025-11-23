@@ -45,6 +45,8 @@ android {
 }
 
 dependencies {
+    //Gson
+    implementation("com.google.code.gson:gson:2.11.0")
 
     // Android core (evita duplicados con libs)
     implementation(libs.androidx.core.ktx)
@@ -64,8 +66,12 @@ dependencies {
     implementation ("androidx.room:room-ktx:2.6.1")
     kapt ("androidx.room:room-compiler:2.6.1")
 
-    // Parse SDK
-    implementation ("com.github.parse-community.Parse-SDK-Android:parse:4.2.1")
+    // Parse SDK compatible con LiveQuery
+    implementation("com.github.parse-community.Parse-SDK-Android:parse:1.17.3")
+    // LiveQuery Android
+    implementation("com.github.parse-community:ParseLiveQuery-Android:1.2.2")
+    // Bolts (requerido para LiveQuery)
+    implementation("com.parse.bolts:bolts-tasks:1.4.0")
 
     // Coroutines
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
