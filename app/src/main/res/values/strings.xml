@@ -1,3 +1,38 @@
 <resources>
-    <string name="app_name">TapBattleProyectoFinal</string>
+    <string name="app_name">Duelo de Trazos</string>
+
+    <!-- MainActivity -->
+    <string name="enter_your_name">Ingresa tu nombre</string>
+    <string name="play">JUGAR</string>
+    <string name="history">HISTORIAL</string>
+
+    <!-- LobbyActivity -->
+    <string name="waiting_room">SALA DE ESPERA</string>
+    <string name="room_code">Código de Sala</string>
+    <string name="join_room">UNIRSE A SALA</string>
+    <string name="waiting_player">Esperando otro jugador...</string>
+    <string name="start_game">INICIAR JUEGO</string>
+
+    <!-- GameActivity -->
+    <string name="round">RONDA</string>
+    <string name="you">Tú</string>
+    <string name="opponent">Oponente</string>
+    <string name="get_ready">¡Prepárate!</string>
+
+    <!-- ResultActivity -->
+    <string name="victory">¡VICTORIA!</string>
+    <string name="defeat">DERROTA</string>
+    <string name="final_result">RESULTADO FINAL</string>
+    <string name="play_again">JUGAR DE NUEVO</string>
+    <string name="back_to_menu">MENÚ PRINCIPAL</string>
+
+    <!-- HistoryActivity -->
+    <string name="game_history">Historial de Partidas</string>
+    <string name="no_games">No hay partidas registradas</string>
+    <string name="play_first_game">¡Juega tu primera partida!</string>
+
+    <!-- Errores -->
+    <string name="error_name_required">Por favor ingresa tu nombre</string>
+    <string name="error_room_code_required">Ingresa un código de sala</string>
+    <string name="error_connection">Error de conexión</string>
 </resources>

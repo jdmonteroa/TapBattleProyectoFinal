@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".ui.MainActivity">
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="⚡ DUELO DE TRAZOS ⚡"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="80dp"/>
+
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tap Battle Multiplayer"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:alpha="0.8"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Card con botones -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardMenu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSubtitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="32dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="32dp"
+            android:gravity="center">
+
+            <!-- Input para nombre del jugador -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPlayerName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tu nombre"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusBottomEnd="12dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPlayerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:maxLines="1"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Botón Jugar -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPlay"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="🎮 JUGAR"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:cornerRadius="16dp"
+                android:layout_marginTop="24dp"
+                app:backgroundTint="@color/primary"/>
+
+            <!-- Botón Historial -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnHistory"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="📊 HISTORIAL"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:cornerRadius="16dp"
+                android:layout_marginTop="16dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:strokeWidth="2dp"
+                app:strokeColor="@color/primary"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

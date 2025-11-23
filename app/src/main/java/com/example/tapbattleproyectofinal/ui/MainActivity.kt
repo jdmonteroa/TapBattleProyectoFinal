@@ -1,47 +1,49 @@
 package com.example.tapbattleproyectofinal.ui
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.tapbattleproyectofinal.ui.theme.TapBattleProyectoFinalTheme
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.tapbattleproyectofinal.databinding.ActivityMainBinding
+import com.example.tapbattleproyectofinal.utils.Constants
 
-class MainActivity : ComponentActivity() {
+/**
+ * Pantalla principal de la aplicación
+ */
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            TapBattleProyectoFinalTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
-        }
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        setupUI()
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+    private fun setupUI() {
+        // Botón Jugar
+        binding.btnPlay.setOnClickListener {
+            val playerName = binding.etPlayerName.text.toString().trim()
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    TapBattleProyectoFinalTheme {
-        Greeting("Android")
+            if (playerName.isEmpty()) {
+                Toast.makeText(this, "Por favor ingresa tu nombre", Toast.LENGTH_SHORT).show()
+                binding.etPlayerName.error = "Nombre requerido"
+                return@setOnClickListener
+            }
+
+            // Ir a LobbyActivity
+            val intent = Intent(this, LobbyActivity::class.java).apply {
+                putExtra(Constants.EXTRA_PLAYER_NAME, playerName)
+            }
+            startActivity(intent)
+        }
+
+        // Botón Historial
+        binding.btnHistory.setOnClickListener {
+            val intent = Intent(this, HistoryActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

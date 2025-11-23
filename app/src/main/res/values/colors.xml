@@ -7,4 +7,19 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Colores principales -->
+    <color name="primary">#667eea</color>
+    <color name="primary_dark">#5568d3</color>
+    <color name="accent">#4ECDC4</color>
+    <color name="secondary">#FF6B6B</color>
+
+    <!-- Colores de fondo -->
+    <color name="background_dark">#1a1a2e</color>
+    <color name="background_light">#F5F5F5</color>
+
+    <!-- Colores de estado -->
+    <color name="success">#4CAF50</color>
+    <color name="error">#F44336</color>
+    <color name="warning">#FF9800</color>
 </resources>
