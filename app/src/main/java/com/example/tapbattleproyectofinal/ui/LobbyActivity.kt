@@ -2,6 +2,7 @@ package com.example.tapbattleproyectofinal.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -102,6 +103,15 @@ class LobbyActivity : AppCompatActivity() {
         // Observar roomId
         viewModel.roomId.observe(this) { id ->
             roomId = id
+        }
+
+        viewModel.roomId.observe(this) { id ->
+            roomId = id
+            Log.d("LOBBY", "========================================")
+            Log.d("LOBBY", "JUGADOR: $playerName")
+            Log.d("LOBBY", "CÓDIGO: $roomCode")
+            Log.d("LOBBY", "ROOM ID: $id")
+            Log.d("LOBBY", "========================================")
         }
     }
 

@@ -1,14 +1,19 @@
 package com.example.tapbattleproyectofinal.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.tapbattleproyectofinal.TapBattleApp
 import com.example.tapbattleproyectofinal.data.GameRepository
 import com.example.tapbattleproyectofinal.data.GameEntity
 import com.example.tapbattleproyectofinal.models.GameEvent
 import com.example.tapbattleproyectofinal.models.GameState
 import com.example.tapbattleproyectofinal.models.Target
+import com.parse.ParseObject
+import com.parse.ParseQuery
+import com.parse.livequery.SubscriptionHandling
 import kotlinx.coroutines.launch
 
 /** ViewModel para manejar la lógica del juego */
@@ -42,15 +47,45 @@ class GameViewModel(private val repository: GameRepository) : ViewModel() {
 
     /** Se suscribe a los eventos de la sala */
     private fun subscribeToEvents(roomId: String) {
-        repository.subscribeToGameEvents(
-            roomId = roomId,
-            onEvent = { event ->
-                handleGameEvent(event)
-            },
-            onError = { exception ->
+        try {
+            // Crear el objeto Room
+            val roomPointer = ParseObject.createWithoutData("Room", roomId)
+
+            // Query para eventos
+            val query = ParseQuery.getQuery<ParseObject>("Event")
+            query.whereEqualTo("room", roomPointer)
+
+            Log.d("GAME_VM", "=== Suscribiéndose a eventos de Room: $roomId ===")
+
+            // Suscribirse con LiveQuery
+            val subscription = TapBattleApp.parseLiveQueryClient.subscribe(query)
+
+            subscription.handleEvent(SubscriptionHandling.Event.CREATE) { _, parseObject ->
+                try {
+                    val type = parseObject.getString("type") ?: return@handleEvent
+                    val payload = parseObject.getJSONObject("payload") ?: return@handleEvent
+
+                    Log.d("GAME_VM", "=== Evento recibido: $type ===")
+
+                    val event = GameEvent.fromJson(type, payload)
+                    if (event != null) {
+                        handleGameEvent(event)
+                    }
+                } catch (e: Exception) {
+                    Log.e("GAME_VM", "Error procesando evento: ${e.message}")
+                    e.printStackTrace()
+                }
+            }
+
+            subscription.handleError { _, exception ->
+                Log.e("GAME_VM", "Error en LiveQuery: ${exception.message}")
                 _error.postValue("Error de conexión: ${exception.message}")
             }
-        )
+
+        } catch (e: Exception) {
+            Log.e("GAME_VM", "Error al suscribirse: ${e.message}")
+            _error.postValue("Error al conectar: ${e.message}")
+        }
     }
 
     /** Maneja los eventos recibidos del servidor */
