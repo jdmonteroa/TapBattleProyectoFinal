@@ -16,8 +16,8 @@ class GameRepository(
 
 
     /** Une a un jugador a la sala */
-    suspend fun joinRoom(code: String): String {
-        return backendService.joinRoom(code)
+    suspend fun joinRoom(code: String, playerName: String): Triple<String, Boolean, String> {
+        return backendService.joinRoom(code, playerName)
     }
 
     /** Inicia el juego en el servidor */
@@ -79,5 +79,14 @@ class GameRepository(
     /** Elimina una partida específica */
     suspend fun deleteGame(game: GameEntity) {
         gameDao.deleteGame(game)
+    }
+
+    fun subscribeToLobbyEvents(
+        roomId: String,
+        onPlayerJoined: (Int) -> Unit,
+        onGameStart: () -> Unit,
+        onError: (Exception) -> Unit
+    ) {
+        backendService.subscribeToLobbyEvents(roomId, onPlayerJoined, onGameStart, onError)
     }
 }

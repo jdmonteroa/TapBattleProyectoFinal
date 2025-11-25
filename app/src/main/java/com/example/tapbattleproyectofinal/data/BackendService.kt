@@ -1,5 +1,6 @@
 package com.example.tapbattleproyectofinal.data
 
+import android.util.Log
 import com.parse.ParseCloud
 import com.parse.ParseException
 import com.parse.ParseObject
@@ -20,22 +21,33 @@ import kotlin.coroutines.resumeWithException
 class BackendService {
 
     //Une a un jugador a una sala
-    suspend fun joinRoom(code: String): String = withContext(Dispatchers.IO) {
+    suspend fun joinRoom(code: String, playerName: String): Triple<String, Boolean, String> = withContext(Dispatchers.IO) {
         suspendCancellableCoroutine { continuation ->
-            val params = hashMapOf<String, Any>("code" to code)
+            val params = hashMapOf<String, Any>(
+                "code" to code,
+                "playerName" to playerName
+            )
+
+            Log.d("BACKEND", "Intentando unirse - Código: $code, Jugador: $playerName")
 
             ParseCloud.callFunctionInBackground<HashMap<String, Any>>(
-                Constants.CloudFunction.JOIN_ROOM,
+                "joinRoom",
                 params
             ) { result, e ->
                 if (e == null && result != null) {
                     val roomId = result["roomId"] as? String
+                    val isCreator = result["isCreator"] as? Boolean ?: false
+                    val creator = result["creator"] as? String ?: ""
+
+                    Log.d("BACKEND", "Room ID: $roomId, isCreator: $isCreator, creator: $creator")
+
                     if (roomId != null) {
-                        continuation.resume(roomId)
+                        continuation.resume(Triple(roomId, isCreator, creator))
                     } else {
                         continuation.resumeWithException(Exception("No se recibió roomId"))
                     }
                 } else {
+                    Log.e("BACKEND", "Error: ${e?.message}")
                     continuation.resumeWithException(e ?: Exception("Error desconocido"))
                 }
             }
@@ -160,4 +172,51 @@ class BackendService {
                 null
             }
         }
+
+    fun subscribeToLobbyEvents(
+        roomId: String,
+        onPlayerJoined: (Int) -> Unit,
+        onGameStart: () -> Unit,
+        onError: (Exception) -> Unit
+    ) {
+        try {
+            val roomPointer = ParseObject.createWithoutData("Room", roomId)
+            val query = ParseQuery.getQuery<ParseObject>("Event")
+            query.whereEqualTo("room", roomPointer)
+
+            Log.d("BACKEND", "=== Suscrito a eventos de lobby: $roomId ===")
+
+            val subscription = TapBattleApp.parseLiveQueryClient.subscribe(query)
+
+            subscription.handleEvent(SubscriptionHandling.Event.CREATE) { _, parseObject ->
+                try {
+                    val type = parseObject.getString("type") ?: return@handleEvent
+                    val payloadJson = parseObject.getJSONObject("payload")
+
+                    Log.d("BACKEND", "=== EVENTO LOBBY: $type ===")
+
+                    when (type) {
+                        "PLAYER_JOINED" -> {
+                            val totalPlayers = payloadJson?.optInt("totalPlayers", 0) ?: 0
+                            onPlayerJoined(totalPlayers)
+                        }
+                        "START" -> {
+                            onGameStart()
+                        }
+                    }
+                } catch (e: Exception) {
+                    Log.e("BACKEND", "Error procesando evento lobby: ${e.message}")
+                }
+            }
+
+            subscription.handleError { _, throwable ->
+                Log.e("BACKEND", "Error LiveQuery lobby: ${throwable.message}")
+                onError(Exception(throwable))
+            }
+
+        } catch (e: Exception) {
+            Log.e("BACKEND", "Error al suscribirse lobby: ${e.message}")
+            onError(e)
+        }
+    }
 }
