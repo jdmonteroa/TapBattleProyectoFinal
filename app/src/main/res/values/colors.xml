@@ -1,25 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- Colores principales -->
-    <color name="primary">#667eea</color>
-    <color name="primary_dark">#5568d3</color>
-    <color name="accent">#4ECDC4</color>
-    <color name="secondary">#FF6B6B</color>
+    <!-- Paleta Espacial Principal -->
+    <color name="space_dark">#0F0C29</color>
+    <color name="space_blue">#1A2980</color>
+    <color name="space_cyan">#26D0CE</color>
+    <color name="neon_purple">#B24BF3</color>
+    <color name="neon_pink">#FF006E</color>
+    <color name="neon_yellow">#FFD60A</color>
+    <color name="neon_orange">#FF8500</color>
+    <color name="neon_green">#00FFA3</color>
 
-    <!-- Colores de fondo -->
-    <color name="background_dark">#1a1a2e</color>
-    <color name="background_light">#F5F5F5</color>
+    <!-- Colores Pixel Art -->
+    <color name="pixel_gold">#FFD700</color>
+    <color name="pixel_orange">#FF8C00</color>
+    <color name="pixel_red">#FF4500</color>
+    <color name="pixel_cyan">#00FFFF</color>
+    <color name="pixel_magenta">#FF00FF</color>
 
-    <!-- Colores de estado -->
-    <color name="success">#4CAF50</color>
-    <color name="error">#F44336</color>
-    <color name="warning">#FF9800</color>
+    <!-- UI -->
+    <color name="primary">#26D0CE</color>
+    <color name="primary_dark">#1A2980</color>
+    <color name="accent">#B24BF3</color>
+    <color name="secondary">#FF006E</color>
+
+    <!-- Backgrounds -->
+    <color name="background_dark">#0F0C29</color>
+    <color name="background_overlay">#AA000000</color>
+    <color name="card_background">#1A1A2E</color>
+
+    <!-- Status -->
+    <color name="success">#00FFA3</color>
+    <color name="error">#FF006E</color>
+    <color name="warning">#FFD60A</color>
+
+    <color name="space_dark_less">#6A6A6A</color>
 </resources>

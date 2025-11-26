@@ -48,10 +48,6 @@ class LobbyActivity : AppCompatActivity() {
     private fun setupUI() {
         binding.tvPlayerName.text = "Jugador: $playerName"
 
-        binding.btnBack.setOnClickListener {
-            finish()
-        }
-
         binding.btnJoinRoom.setOnClickListener {
             val code = binding.etRoomCode.text.toString().trim().uppercase()
 

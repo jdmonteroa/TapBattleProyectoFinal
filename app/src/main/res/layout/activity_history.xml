@@ -5,24 +5,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
+    android:background="@drawable/gradient_space_background"
     tools:context=".ui.HistoryActivity">
 
-    <!-- Toolbar -->
+    <!-- Toolbar espacial -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
-        android:background="@android:color/transparent"
-        app:title="Historial de Partidas"
-        app:titleTextColor="@color/white"
+        android:background="@drawable/toolbar_gradient"
+        app:title="📊 MISSION ARCHIVES"
+        app:titleTextColor="@color/pixel_gold"
+        app:titleTextAppearance="@style/ToolbarTitleStyle"
         app:navigationIcon="@drawable/ic_arrow_back"
-        app:navigationIconTint="@color/white"
+        app:navigationIconTint="@color/space_cyan"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:elevation="8dp"/>
 
-    <!-- RecyclerView para historial -->
+    <!-- RecyclerView con diseño espacial -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvHistory"
         android:layout_width="0dp"
@@ -35,7 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:listitem="@layout/item_game_history"/>
 
-    <!-- Mensaje cuando está vacío -->
+    <!-- Vista vacía con diseño espacial -->
     <LinearLayout
         android:id="@+id/emptyView"
         android:layout_width="wrap_content"
@@ -48,29 +50,53 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <!-- Icono animado -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="📋"
-            android:textSize="80sp"/>
+            android:text="🛸"
+            android:textSize="100sp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No hay partidas registradas"
-            android:textSize="18sp"
-            android:textColor="@color/white"
+            android:text="NO MISSIONS"
+            android:textSize="28sp"
             android:textStyle="bold"
+            android:fontFamily="monospace"
+            android:textColor="@color/space_cyan"
+            android:shadowColor="@color/neon_purple"
+            android:shadowRadius="10"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RECORDED"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
+            android:textColor="@color/pixel_gold"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⚡ Start your first battle!"
+            android:textSize="16sp"
+            android:fontFamily="monospace"
+            android:textColor="@color/white"
+            android:alpha="0.8"
             android:layout_marginTop="16dp"/>
 
+        <!-- Decoración -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="¡Juega tu primera partida!"
-            android:textSize="14sp"
-            android:textColor="@color/white"
-            android:alpha="0.7"
-            android:layout_marginTop="8dp"/>
+            android:text="★ ★ ★"
+            android:textSize="20sp"
+            android:textColor="@color/space_cyan"
+            android:layout_marginTop="12dp"/>
 
     </LinearLayout>
 

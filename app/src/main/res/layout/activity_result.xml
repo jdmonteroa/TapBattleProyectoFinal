@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
+    android:background="@drawable/gradient_space_reverse"
     tools:context=".ui.ResultActivity">
 
     <ScrollView
@@ -20,152 +20,224 @@
             android:padding="24dp"
             android:gravity="center">
 
-            <!-- Emoji de resultado -->
+            <!-- Emoji animado del resultado -->
             <TextView
                 android:id="@+id/tvResultEmoji"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="🏆"
-                android:textSize="120sp"
-                android:layout_marginTop="40dp"/>
+                android:textSize="140sp"
+                android:layout_marginTop="40dp"
+                android:shadowColor="@color/neon_yellow"
+                android:shadowRadius="30"/>
 
-            <!-- Título de resultado -->
+            <!-- Título de resultado con efecto pixel -->
             <TextView
                 android:id="@+id/tvResultTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="¡VICTORIA!"
-                android:textSize="42sp"
+                android:text="VICTORY"
+                android:textSize="56sp"
                 android:textStyle="bold"
-                android:textColor="@color/white"
-                android:shadowColor="#000000"
-                android:shadowDx="2"
-                android:shadowDy="2"
-                android:shadowRadius="4"
-                android:layout_marginTop="16dp"/>
+                android:fontFamily="monospace"
+                android:textColor="@color/pixel_gold"
+                android:shadowColor="@color/neon_yellow"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="20"
+                android:layout_marginTop="20dp"
+                android:letterSpacing="0.1"/>
 
             <!-- Subtítulo -->
             <TextView
                 android:id="@+id/tvResultSubtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Eres el campeón"
+                android:text="★ CHAMPION OF THE STARS ★"
                 android:textSize="18sp"
-                android:textColor="@color/white"
-                android:alpha="0.9"
-                android:layout_marginTop="8dp"/>
+                android:fontFamily="monospace"
+                android:textColor="@color/space_cyan"
+                android:textStyle="bold"
+                android:layout_marginTop="12dp"/>
 
-            <!-- Card con estadísticas -->
+            <!-- Card con estadísticas espaciales -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="12dp">
+                android:layout_marginTop="40dp"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="20dp"
+                android:backgroundTint="#1A1A2E"
+                app:strokeColor="@color/neon_purple"
+                app:strokeWidth="3dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="24dp">
+                    android:padding="28dp">
 
+                    <!-- Header del reporte -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="RESULTADO FINAL"
-                        android:textSize="16sp"
+                        android:text="◈ BATTLE REPORT ◈"
+                        android:textSize="18sp"
                         android:textStyle="bold"
-                        android:textColor="@color/primary"
-                        android:layout_gravity="center"/>
+                        android:fontFamily="monospace"
+                        android:textColor="@color/space_cyan"
+                        android:layout_gravity="center"
+                        android:shadowColor="@color/neon_purple"
+                        android:shadowRadius="10"/>
 
-                    <!-- Puntuaciones -->
+                    <!-- Línea decorativa -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@drawable/divider_gradient"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="20dp"/>
+
+                    <!-- Puntuaciones lado a lado -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="24dp">
+                        android:orientation="horizontal">
 
-                        <!-- Jugador -->
+                        <!-- Panel Jugador -->
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:orientation="vertical"
-                            android:gravity="center">
+                            android:gravity="center"
+                            android:background="@drawable/score_panel_left"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="▸ YOU"
+                                android:textSize="12sp"
+                                android:fontFamily="monospace"
+                                android:textColor="@color/neon_green"
+                                android:textStyle="bold"/>
 
                             <TextView
                                 android:id="@+id/tvPlayerNameResult"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Jugador"
-                                android:textSize="16sp"
+                                android:text="PILOT"
+                                android:textSize="18sp"
                                 android:textStyle="bold"
-                                tools:text="Juan"/>
+                                android:fontFamily="monospace"
+                                android:textColor="@color/white"
+                                android:layout_marginTop="6dp"
+                                tools:text="JUAN"/>
 
                             <TextView
                                 android:id="@+id/tvPlayerScoreResult"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="5"
-                                android:textSize="48sp"
+                                android:textSize="64sp"
                                 android:textStyle="bold"
-                                android:textColor="#4ECDC4"
-                                android:layout_marginTop="8dp"/>
+                                android:fontFamily="monospace"
+                                android:textColor="@color/pixel_gold"
+                                android:shadowColor="@color/neon_yellow"
+                                android:shadowRadius="20"
+                                android:layout_marginTop="12dp"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="puntos"
-                                android:textSize="12sp"
-                                android:textColor="@android:color/darker_gray"/>
+                                android:text="HITS"
+                                android:textSize="11sp"
+                                android:fontFamily="monospace"
+                                android:textColor="@color/space_cyan"
+                                android:layout_marginTop="4dp"/>
 
                         </LinearLayout>
 
-                        <!-- VS -->
-                        <TextView
+                        <!-- VS Central -->
+                        <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="VS"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/primary"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginEnd="16dp"/>
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="12dp">
 
-                        <!-- Oponente -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="⚔"
+                                android:textSize="40sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="VS"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:fontFamily="monospace"
+                                android:textColor="@color/neon_purple"
+                                android:layout_marginTop="4dp"/>
+
+                        </LinearLayout>
+
+                        <!-- Panel Oponente -->
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:orientation="vertical"
-                            android:gravity="center">
+                            android:gravity="center"
+                            android:background="@drawable/score_panel_right"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="RIVAL ◂"
+                                android:textSize="12sp"
+                                android:fontFamily="monospace"
+                                android:textColor="@color/neon_pink"
+                                android:textStyle="bold"/>
 
                             <TextView
                                 android:id="@+id/tvOpponentNameResult"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Oponente"
-                                android:textSize="16sp"
+                                android:text="ENEMY"
+                                android:textSize="18sp"
                                 android:textStyle="bold"
-                                tools:text="Maria"/>
+                                android:fontFamily="monospace"
+                                android:textColor="@color/white"
+                                android:layout_marginTop="6dp"
+                                tools:text="MARIA"/>
 
                             <TextView
                                 android:id="@+id/tvOpponentScoreResult"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="3"
-                                android:textSize="48sp"
+                                android:textSize="64sp"
                                 android:textStyle="bold"
-                                android:textColor="#FF6B6B"
-                                android:layout_marginTop="8dp"/>
+                                android:fontFamily="monospace"
+                                android:textColor="@color/pixel_orange"
+                                android:shadowColor="@color/neon_orange"
+                                android:shadowRadius="20"
+                                android:layout_marginTop="12dp"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="puntos"
-                                android:textSize="12sp"
-                                android:textColor="@android:color/darker_gray"/>
+                                android:text="HITS"
+                                android:textSize="11sp"
+                                android:fontFamily="monospace"
+                                android:textColor="@color/space_cyan"
+                                android:layout_marginTop="4dp"/>
 
                         </LinearLayout>
 
@@ -174,12 +246,12 @@
                     <!-- Divider -->
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#E0E0E0"
+                        android:layout_height="2dp"
+                        android:background="@drawable/divider_gradient"
                         android:layout_marginTop="24dp"
-                        android:layout_marginBottom="16dp"/>
+                        android:layout_marginBottom="20dp"/>
 
-                    <!-- Información adicional -->
+                    <!-- Info adicional -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -189,18 +261,20 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Rondas jugadas: "
+                            android:text="⚡ WAVES COMPLETED: "
                             android:textSize="14sp"
-                            android:textColor="@android:color/darker_gray"/>
+                            android:fontFamily="monospace"
+                            android:textColor="@color/space_cyan"/>
 
                         <TextView
                             android:id="@+id/tvRoundsPlayed"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="5"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
                             android:textStyle="bold"
-                            android:textColor="@color/primary"/>
+                            android:fontFamily="monospace"
+                            android:textColor="@color/pixel_gold"/>
 
                     </LinearLayout>
 
@@ -208,30 +282,47 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Botones -->
+            <!-- Botones de acción -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnPlayAgain"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="🔄 JUGAR DE NUEVO"
-                android:textSize="16sp"
+                android:layout_height="70dp"
+                android:text="🔄 REMATCH"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                app:cornerRadius="16dp"
-                android:layout_marginTop="32dp"
-                app:backgroundTint="@color/primary"/>
+                android:fontFamily="monospace"
+                app:cornerRadius="20dp"
+                android:layout_marginTop="36dp"
+                app:backgroundTint="@color/neon_purple"
+                app:strokeColor="@color/neon_pink"
+                app:strokeWidth="2dp"
+                android:textColor="@color/white"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnBackToMenu"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="🏠 MENÚ PRINCIPAL"
-                android:textSize="16sp"
+                android:layout_height="65dp"
+                android:text="🏠 SPACE DOCK"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                app:cornerRadius="16dp"
+                android:fontFamily="monospace"
+                app:cornerRadius="18dp"
                 android:layout_marginTop="16dp"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                app:strokeWidth="2dp"
-                app:strokeColor="@color/white"/>
+                app:strokeWidth="3dp"
+                app:strokeColor="@color/space_cyan"
+                android:textColor="@color/space_cyan"/>
+
+            <!-- Footer decorativo -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="★ MISSION COMPLETE ★"
+                android:textSize="12sp"
+                android:fontFamily="monospace"
+                android:textColor="@color/space_cyan"
+                android:alpha="0.6"
+                android:layout_marginTop="24dp"/>
 
         </LinearLayout>
 

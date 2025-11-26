@@ -51,7 +51,7 @@ class ResultActivity : AppCompatActivity() {
         // Configurar UI según resultado
         if (didWin) {
             binding.tvResultEmoji.text = "🏆"
-            binding.tvResultTitle.text = "¡VICTORIA!"
+            binding.tvResultTitle.text = "VICTORIA"
             binding.tvResultSubtitle.text = "Eres el campeón"
         } else {
             binding.tvResultEmoji.text = "😔"

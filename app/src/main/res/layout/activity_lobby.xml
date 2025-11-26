@@ -5,34 +5,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
+    android:background="@drawable/gradient_space_background"
     tools:context=".ui.LobbyActivity">
 
-    <!-- Botón atrás -->
-    <ImageButton
-        android:id="@+id/btnBack"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:src="@drawable/ic_arrow_back"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        app:tint="@color/white"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="16dp"/>
-
+    <!-- Título con efecto pixel -->
     <TextView
         android:id="@+id/tvLobbyTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SALA DE ESPERA"
-        android:textSize="28sp"
+        android:text="🛸 SPACE BAY"
+        android:textSize="32sp"
         android:textStyle="bold"
-        android:textColor="@color/white"
+        android:fontFamily="monospace"
+        android:textColor="@color/pixel_gold"
+        android:shadowColor="@color/neon_yellow"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="12"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="80dp"/>
 
+    <!-- Card principal -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardLobby"
         android:layout_width="0dp"
@@ -41,39 +36,49 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvLobbyTitle"
         android:layout_margin="24dp"
-        app:cardCornerRadius="24dp"
-        app:cardElevation="12dp"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="16dp"
+        android:backgroundTint="#1A1A2E"
+        app:strokeColor="@color/neon_purple"
+        app:strokeWidth="2dp"
         android:layout_marginTop="32dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="32dp">
+            android:padding="28dp">
 
-            <!-- Nombre del jugador -->
+            <!-- Nombre del jugador con estilo retro -->
             <TextView
                 android:id="@+id/tvPlayerName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Jugador: "
-                android:textSize="18sp"
+                android:text="PILOT: "
+                android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@color/primary"
-                android:layout_gravity="center"/>
+                android:fontFamily="monospace"
+                android:textColor="@color/neon_green"
+                android:layout_gravity="center"
+                android:shadowColor="@color/neon_green"
+                android:shadowRadius="8"/>
 
-            <!-- Input código de sala -->
+            <!-- Input código con estilo espacial -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilRoomCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Código de Sala"
+                android:hint="🔑 STATION CODE"
                 android:layout_marginTop="24dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:boxCornerRadiusTopStart="12dp"
-                app:boxCornerRadiusTopEnd="12dp"
-                app:boxCornerRadiusBottomStart="12dp"
-                app:boxCornerRadiusBottomEnd="12dp">
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxStrokeColor="@color/space_cyan"
+                app:hintTextColor="@color/space_cyan"
+                app:boxStrokeWidth="2dp"
+                app:boxBackgroundColor="@color/space_dark_less">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etRoomCode"
@@ -81,30 +86,40 @@
                     android:layout_height="wrap_content"
                     android:inputType="textCapCharacters"
                     android:maxLines="1"
-                    android:textAllCaps="true"/>
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:fontFamily="monospace"
+                    android:textStyle="bold"
+                    android:textSize="18sp"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ejemplo: GAME123"
+                android:text="⚡ FORMAT: STAR001"
                 android:textSize="12sp"
-                android:textColor="@android:color/darker_gray"
-                android:layout_marginTop="4dp"
+                android:textColor="@color/space_cyan"
+                android:fontFamily="monospace"
+                android:alpha="0.7"
+                android:layout_marginTop="6dp"
                 android:layout_marginStart="12dp"/>
 
-            <!-- Botón unirse -->
+            <!-- Botón unirse con efecto neón -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnJoinRoom"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="🚪 UNIRSE A SALA"
-                android:textSize="18sp"
+                android:layout_height="68dp"
+                android:text="🚪 DOCK STATION"
+                android:textSize="19sp"
                 android:textStyle="bold"
-                app:cornerRadius="16dp"
+                android:fontFamily="monospace"
+                app:cornerRadius="18dp"
                 android:layout_marginTop="24dp"
-                app:backgroundTint="@color/primary"/>
+                app:backgroundTint="@color/neon_purple"
+                android:textColor="@color/white"
+                app:strokeColor="@color/neon_pink"
+                app:strokeWidth="2dp"/>
 
             <!-- ProgressBar -->
             <ProgressBar
@@ -112,26 +127,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:indeterminateTint="@color/space_cyan"
                 android:layout_marginTop="16dp"
                 android:visibility="gone"/>
 
-            <!-- Texto de estado -->
+            <!-- Status -->
             <TextView
                 android:id="@+id/tvStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textSize="14sp"
-                android:textColor="@color/primary"
-                android:layout_marginTop="16dp"
+                android:textColor="@color/neon_green"
+                android:fontFamily="monospace"
+                android:layout_marginTop="12dp"
                 android:visibility="gone"
-                tools:text="Conectando..."/>
+                tools:text="⚡ CONNECTING..."/>
 
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Card con info esperando jugadores -->
+    <!-- Card esperando -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardWaiting"
         android:layout_width="0dp"
@@ -140,8 +157,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cardLobby"
         android:layout_margin="24dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="8dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="12dp"
+        android:backgroundTint="#1A1A2E"
+        app:strokeColor="@color/neon_green"
+        app:strokeWidth="2dp"
         android:visibility="gone"
         tools:visibility="visible">
 
@@ -155,38 +175,46 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="⏳"
-                android:textSize="48sp"/>
+                android:text="🛸"
+                android:textSize="56sp"/>
 
             <TextView
                 android:id="@+id/tvWaitingText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Esperando otro jugador..."
-                android:textSize="16sp"
+                android:text="SCANNING FOR PILOTS..."
+                android:textSize="17sp"
                 android:textStyle="bold"
-                android:layout_marginTop="8dp"/>
+                android:fontFamily="monospace"
+                android:textColor="@color/neon_green"
+                android:textAlignment="center"
+                android:layout_marginTop="12dp"/>
 
             <TextView
                 android:id="@+id/tvRoomCodeDisplay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sala: GAME123"
+                android:text="STATION: STAR001"
                 android:textSize="14sp"
-                android:textColor="@android:color/darker_gray"
-                android:layout_marginTop="4dp"/>
+                android:fontFamily="monospace"
+                android:textColor="@color/space_cyan"
+                android:layout_marginTop="8dp"/>
 
-            <!-- Botón iniciar juego -->
+            <!-- Botón iniciar para creador -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnStartGame"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:text="▶️ INICIAR JUEGO"
-                android:textSize="16sp"
+                android:layout_height="64dp"
+                android:text="▶️ LAUNCH BATTLE"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                app:cornerRadius="12dp"
-                android:layout_marginTop="16dp"
-                app:backgroundTint="@color/accent"/>
+                android:fontFamily="monospace"
+                app:cornerRadius="16dp"
+                android:layout_marginTop="20dp"
+                app:backgroundTint="@color/neon_green"
+                android:textColor="@color/space_dark"
+                app:strokeColor="@color/pixel_gold"
+                app:strokeWidth="2dp"/>
 
         </LinearLayout>
 

@@ -5,52 +5,115 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
+    android:background="@drawable/gradient_space_background"
     tools:context=".ui.MainActivity">
 
-    <!-- Título -->
-    <TextView
-        android:id="@+id/tvTitle"
+    <!-- Estrellas decorativas de fondo -->
+    <View
+        android:id="@+id/star1"
+        android:layout_width="4dp"
+        android:layout_height="4dp"
+        android:background="@drawable/star_shape"
+        android:alpha="0.8"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="50dp"/>
+
+    <View
+        android:id="@+id/star2"
+        android:layout_width="6dp"
+        android:layout_height="6dp"
+        android:background="@drawable/star_shape"
+        android:alpha="0.6"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="80dp"/>
+
+    <View
+        android:id="@+id/star3"
+        android:layout_width="3dp"
+        android:layout_height="3dp"
+        android:background="@drawable/star_shape"
+        android:alpha="0.9"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="300dp"
+        android:layout_marginStart="100dp"/>
+
+    <!-- Logo del juego con efecto neón -->
+    <LinearLayout
+        android:id="@+id/logoContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="⚡ DUELO DE TRAZOS ⚡"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:shadowColor="#000000"
-        android:shadowDx="2"
-        android:shadowDy="2"
-        android:shadowRadius="4"
+        android:orientation="vertical"
+        android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="80dp"/>
+        android:layout_marginTop="60dp">
 
-    <TextView
-        android:id="@+id/tvSubtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tap Battle Multiplayer"
-        android:textSize="16sp"
-        android:textColor="@color/white"
-        android:alpha="0.8"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"/>
+        <!-- Título principal estilo pixel -->
+        <TextView
+            android:id="@+id/tvTitlePart1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="STARFALL"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
+            android:textColor="@color/pixel_gold"
+            android:shadowColor="@color/neon_yellow"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="15"
+            android:letterSpacing="0.1"/>
 
-    <!-- Card con botones -->
+        <TextView
+            android:id="@+id/tvSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SPACE TAP FURY"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
+            android:textColor="@color/space_cyan"
+            android:shadowColor="@color/neon_purple"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="10"
+            android:letterSpacing="0.15"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Icono espacial -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⭐🚀💫"
+            android:textSize="32sp"
+            android:layout_marginTop="16dp"/>
+
+    </LinearLayout>
+
+    <!-- Card principal con efecto glassmorphism -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvSubtitle"
+        app:layout_constraintTop_toBottomOf="@id/logoContainer"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_margin="32dp"
-        app:cardCornerRadius="24dp"
-        app:cardElevation="12dp">
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="20dp"
+        android:backgroundTint="#1A1A2E"
+        app:strokeColor="@color/space_cyan"
+        app:strokeWidth="2dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -59,52 +122,82 @@
             android:padding="32dp"
             android:gravity="center">
 
-            <!-- Input para nombre del jugador -->
+            <!-- Input nombre con estilo espacial -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilPlayerName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Tu nombre"
+                android:hint="⚡ PILOT NAME"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:boxCornerRadiusTopStart="12dp"
-                app:boxCornerRadiusTopEnd="12dp"
-                app:boxCornerRadiusBottomStart="12dp"
-                app:boxCornerRadiusBottomEnd="12dp">
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxStrokeColor="@color/space_cyan"
+                app:hintTextColor="@color/space_cyan"
+                app:boxStrokeWidth="2dp"
+                app:boxBackgroundColor="@color/space_dark_less">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPlayerName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/space_cyan"
+                    android:fontFamily="monospace"
+                    android:textStyle="bold"
                     android:maxLines="1"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Botón Jugar -->
+            <!-- Botón PLAY con efecto neón -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnPlay"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="🎮 JUGAR"
-                android:textSize="18sp"
+                android:layout_height="70dp"
+                android:text="🚀 START MISSION"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                app:cornerRadius="16dp"
-                android:layout_marginTop="24dp"
-                app:backgroundTint="@color/primary"/>
+                android:fontFamily="monospace"
+                app:cornerRadius="20dp"
+                android:layout_marginTop="28dp"
+                app:backgroundTint="@color/neon_purple"
+                android:textColor="@color/white"
+                android:shadowColor="@color/neon_pink"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="10"
+                app:strokeColor="@color/neon_pink"
+                app:strokeWidth="2dp"
+                android:elevation="12dp"/>
 
-            <!-- Botón Historial -->
+            <!-- Botón HISTORIAL estilo outline -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnHistory"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="📊 HISTORIAL"
+                android:layout_height="65dp"
+                android:text="📊 MISSION LOG"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:cornerRadius="16dp"
+                android:fontFamily="monospace"
+                app:cornerRadius="18dp"
                 android:layout_marginTop="16dp"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                app:strokeWidth="2dp"
-                app:strokeColor="@color/primary"/>
+                app:strokeWidth="3dp"
+                app:strokeColor="@color/space_cyan"
+                android:textColor="@color/space_cyan"/>
+
+            <!-- Texto decorativo -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="v1.0 | SPACE EDITION"
+                android:textSize="11sp"
+                android:textColor="@color/space_cyan"
+                android:alpha="0.6"
+                android:fontFamily="monospace"
+                android:layout_marginTop="20dp"/>
 
         </LinearLayout>
 

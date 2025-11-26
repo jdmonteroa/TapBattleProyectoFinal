@@ -7,7 +7,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 
- //Entidad de Room para guardar historial de partidas
+//Entidad de Room para guardar historial de partidas
 @Entity(tableName = "game_history")
 data class GameEntity(
     @PrimaryKey(autoGenerate = true)

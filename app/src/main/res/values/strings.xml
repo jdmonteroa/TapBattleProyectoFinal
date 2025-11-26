@@ -1,38 +1,38 @@
 <resources>
-    <string name="app_name">Duelo de Trazos</string>
+    <string name="app_name">Starfall: Space Tap Fury</string>
 
     <!-- MainActivity -->
-    <string name="enter_your_name">Ingresa tu nombre</string>
-    <string name="play">JUGAR</string>
-    <string name="history">HISTORIAL</string>
+    <string name="enter_your_name">⚡ PILOT NAME</string>
+    <string name="play">🚀 START MISSION</string>
+    <string name="history">📊 MISSION LOG</string>
 
     <!-- LobbyActivity -->
-    <string name="waiting_room">SALA DE ESPERA</string>
-    <string name="room_code">Código de Sala</string>
-    <string name="join_room">UNIRSE A SALA</string>
-    <string name="waiting_player">Esperando otro jugador...</string>
-    <string name="start_game">INICIAR JUEGO</string>
+    <string name="waiting_room">🛸 DOCKING BAY</string>
+    <string name="room_code">🔑 STATION CODE</string>
+    <string name="join_room">🚪 DOCK STATION</string>
+    <string name="waiting_player">SCANNING FOR PILOTS...</string>
+    <string name="start_game">▶️ LAUNCH BATTLE</string>
 
     <!-- GameActivity -->
-    <string name="round">RONDA</string>
-    <string name="you">Tú</string>
-    <string name="opponent">Oponente</string>
-    <string name="get_ready">¡Prepárate!</string>
+    <string name="round">WAVE</string>
+    <string name="you">YOU</string>
+    <string name="opponent">RIVAL</string>
+    <string name="get_ready">⚡ PREPARE FOR COMBAT!</string>
 
     <!-- ResultActivity -->
-    <string name="victory">¡VICTORIA!</string>
-    <string name="defeat">DERROTA</string>
-    <string name="final_result">RESULTADO FINAL</string>
-    <string name="play_again">JUGAR DE NUEVO</string>
-    <string name="back_to_menu">MENÚ PRINCIPAL</string>
+    <string name="victory">🏆 VICTORY</string>
+    <string name="defeat">💀 DEFEAT</string>
+    <string name="final_result">BATTLE REPORT</string>
+    <string name="play_again">🔄 REMATCH</string>
+    <string name="back_to_menu">🏠 SPACE DOCK</string>
 
     <!-- HistoryActivity -->
-    <string name="game_history">Historial de Partidas</string>
-    <string name="no_games">No hay partidas registradas</string>
-    <string name="play_first_game">¡Juega tu primera partida!</string>
+    <string name="game_history">📊 Mission Archives</string>
+    <string name="no_games">NO MISSIONS RECORDED</string>
+    <string name="play_first_game">START YOUR FIRST BATTLE!</string>
 
     <!-- Errores -->
-    <string name="error_name_required">Por favor ingresa tu nombre</string>
-    <string name="error_room_code_required">Ingresa un código de sala</string>
-    <string name="error_connection">Error de conexión</string>
+    <string name="error_name_required">⚠️ PILOT NAME REQUIRED</string>
+    <string name="error_room_code_required">⚠️ STATION CODE REQUIRED</string>
+    <string name="error_connection">🚫 CONNECTION FAILED</string>
 </resources>

@@ -119,7 +119,7 @@ class GameActivity : AppCompatActivity() {
         binding.tvPlayerScore.text = playerScore.toString()
         binding.tvOpponentName.text = opponentName
         binding.tvOpponentScore.text = opponentScore.toString()
-        binding.tvRound.text = "$round/$maxRounds"
+        //binding.tvRound.text = "$round/$maxRounds"
     }
 
     private fun handleGameEvent(event: GameEvent) {
@@ -142,7 +142,6 @@ class GameActivity : AppCompatActivity() {
                     "Punto para ${event.winner}"
                 }
 
-                showRoundWinner(message)
             }
 
             is GameEvent.End -> {
@@ -151,15 +150,6 @@ class GameActivity : AppCompatActivity() {
         }
     }
 
-    private fun showRoundWinner(message: String) {
-        binding.tvRoundWinner.text = message
-        binding.tvRoundWinner.visibility = View.VISIBLE
-
-        // Ocultar después de 1.5 segundos
-        handler.postDelayed({
-            binding.tvRoundWinner.visibility = View.GONE
-        }, 1500)
-    }
 
     private fun goToResults(champion: String, finalScore: Map<String, Int>) {
         val intent = Intent(this, ResultActivity::class.java).apply {

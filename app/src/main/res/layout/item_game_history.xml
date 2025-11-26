@@ -5,15 +5,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="6dp">
+    android:layout_marginBottom="16dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="12dp"
+    android:backgroundTint="#1A1A2E"
+    app:strokeColor="@color/space_cyan"
+    app:strokeWidth="2dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="20dp">
 
         <!-- Header con fecha y resultado -->
         <LinearLayout
@@ -22,66 +25,72 @@
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
-            <!-- Emoji de resultado -->
+            <!-- Emoji resultado -->
             <TextView
                 android:id="@+id/tvResultEmoji"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="🏆"
-                android:textSize="32sp"
+                android:textSize="40sp"
                 tools:text="🏆"/>
 
+            <!-- Info resultado -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:layout_marginStart="12dp">
+                android:layout_marginStart="16dp">
 
                 <TextView
                     android:id="@+id/tvResultText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="VICTORIA"
-                    android:textSize="18sp"
+                    android:text="VICTORY"
+                    android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textColor="@color/primary"
-                    tools:text="VICTORIA"/>
+                    android:fontFamily="monospace"
+                    android:textColor="@color/pixel_gold"
+                    android:shadowColor="@color/neon_yellow"
+                    android:shadowRadius="8"
+                    tools:text="VICTORY"/>
 
                 <TextView
                     android:id="@+id/tvDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hace 2 horas"
+                    android:text="2 hours ago"
                     android:textSize="12sp"
-                    android:textColor="@android:color/darker_gray"
-                    android:layout_marginTop="2dp"
-                    tools:text="Hace 2 horas"/>
+                    android:fontFamily="monospace"
+                    android:textColor="@color/space_cyan"
+                    android:layout_marginTop="4dp"
+                    tools:text="2 hours ago"/>
 
             </LinearLayout>
 
-            <!-- Código de sala -->
+            <!-- Código de sala con estilo pixel -->
             <TextView
                 android:id="@+id/tvRoomCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="GAME123"
+                android:text="STAR001"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                android:textColor="@color/primary"
-                android:background="@drawable/bg_room_code"
-                android:padding="6dp"
-                tools:text="GAME123"/>
+                android:fontFamily="monospace"
+                android:textColor="@color/neon_purple"
+                android:background="@drawable/code_badge_bg"
+                android:padding="8dp"
+                tools:text="STAR001"/>
 
         </LinearLayout>
 
-        <!-- Divider -->
+        <!-- Divider con gradiente -->
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E0E0E0"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"/>
+            android:layout_height="2dp"
+            android:background="@drawable/divider_gradient"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
 
         <!-- Puntuaciones -->
         <LinearLayout
@@ -98,37 +107,68 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="▸ YOU"
+                    android:textSize="11sp"
+                    android:fontFamily="monospace"
+                    android:textColor="@color/neon_green"
+                    android:textStyle="bold"/>
+
+                <TextView
                     android:id="@+id/tvPlayerName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Juan"
-                    android:textSize="14sp"
+                    android:text="PILOT"
+                    android:textSize="15sp"
                     android:textStyle="bold"
-                    tools:text="Juan"/>
-
+                    android:fontFamily="monospace"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="4dp"
+                    tools:text="JUAN"/>
                 <TextView
                     android:id="@+id/tvPlayerScore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="5"
-                    android:textSize="24sp"
+                    android:textSize="36sp"
                     android:textStyle="bold"
-                    android:textColor="#4ECDC4"
-                    android:layout_marginTop="4dp"
+                    android:fontFamily="monospace"
+                    android:textColor="@color/pixel_gold"
+                    android:shadowColor="@color/neon_yellow"
+                    android:shadowRadius="10"
+                    android:layout_marginTop="6dp"
                     tools:text="5"/>
 
             </LinearLayout>
 
             <!-- VS -->
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="VS"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:textColor="@color/primary"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"/>
+                android:layout_marginEnd="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/neon_purple"
+                    android:text="⚔"
+                    android:textSize="24sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="VS"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:fontFamily="monospace"
+                    android:textColor="@color/neon_purple"
+                    android:layout_marginTop="4dp"/>
+
+            </LinearLayout>
 
             <!-- Oponente -->
             <LinearLayout
@@ -139,23 +179,38 @@
                 android:gravity="end">
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RIVAL ◂"
+                    android:textSize="11sp"
+                    android:fontFamily="monospace"
+                    android:textColor="@color/neon_pink"
+                    android:textStyle="bold"/>
+
+                <TextView
                     android:id="@+id/tvOpponentName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Maria"
-                    android:textSize="14sp"
+                    android:text="ENEMY"
+                    android:textSize="15sp"
                     android:textStyle="bold"
-                    tools:text="Maria"/>
+                    android:fontFamily="monospace"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="4dp"
+                    tools:text="MARIA"/>
 
                 <TextView
                     android:id="@+id/tvOpponentScore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="3"
-                    android:textSize="24sp"
+                    android:textSize="36sp"
                     android:textStyle="bold"
-                    android:textColor="#FF6B6B"
-                    android:layout_marginTop="4dp"
+                    android:fontFamily="monospace"
+                    android:textColor="@color/pixel_orange"
+                    android:shadowColor="@color/neon_orange"
+                    android:shadowRadius="10"
+                    android:layout_marginTop="6dp"
                     tools:text="3"/>
 
             </LinearLayout>
@@ -163,5 +218,4 @@
         </LinearLayout>
 
     </LinearLayout>
-
 </com.google.android.material.card.MaterialCardView>
