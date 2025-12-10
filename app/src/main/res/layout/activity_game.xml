@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Panel superior con estilo espacial -->
+    <!-- Panel superior-->
     <LinearLayout
         android:id="@+id/topPanel"
         android:layout_width="0dp"
@@ -107,7 +107,7 @@
 
     </LinearLayout>
 
-    <!-- Mensaje de inicio con efecto espacial -->
+    <!-- Mensaje de inicio -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardStartMessage"
         android:layout_width="wrap_content"

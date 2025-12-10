@@ -10,12 +10,11 @@ interface GameDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertGame(game: GameEntity): Long
 
-    //Obtiene todas las partidas ordenadas por fecha
+    //Obtiene todas las partidas ordenadas por tiempo
     @Query("SELECT * FROM game_history ORDER BY timestamp DESC")
     fun getAllGames(): LiveData<List<GameEntity>>
 
-
-    //Obtiene las últimas N partidas
+    //Obtiene las últimas partidas
     @Query("SELECT * FROM game_history ORDER BY timestamp DESC LIMIT :limit")
     suspend fun getRecentGames(limit: Int): List<GameEntity>
 

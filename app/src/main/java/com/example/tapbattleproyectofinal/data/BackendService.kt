@@ -55,7 +55,7 @@ class BackendService {
     }
 
 
-    //Inicia el juego
+    //Inicia el juego con paso de parametros de los jugadores
     suspend fun startGame(roomId: String): Boolean = withContext(Dispatchers.IO) {
         suspendCancellableCoroutine { continuation ->
             val params = hashMapOf<String, Any>("roomId" to roomId)
@@ -116,7 +116,6 @@ class BackendService {
 
             // Manejar eventos CREATE (nuevos eventos)
             subscription.handleEvent(
-                // ¡CORRECCIÓN! Usamos la clase simple 'SubscriptionHandling' ya importada.
                 SubscriptionHandling.Event.CREATE
             ) { _, obj ->
                 try {
@@ -172,7 +171,7 @@ class BackendService {
                 null
             }
         }
-
+    //Funcion que maneja los eventos que pasen en el lobby
     fun subscribeToLobbyEvents(
         roomId: String,
         onPlayerJoined: (Int) -> Unit,

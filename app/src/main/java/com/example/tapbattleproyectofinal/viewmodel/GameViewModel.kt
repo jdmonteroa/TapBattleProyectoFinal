@@ -16,14 +16,14 @@ import com.parse.ParseQuery
 import com.parse.livequery.SubscriptionHandling
 import kotlinx.coroutines.launch
 
-/** ViewModel para manejar la lógica del juego */
+// ViewModel para manejar la lógica del juego
 class GameViewModel(private val repository: GameRepository) : ViewModel() {
 
     // Estado del juego
     private val _gameState = MutableLiveData<GameState>()
     val gameState: LiveData<GameState> = _gameState
 
-    // Eventos del juego
+    // Eventos manejados en juego
     private val _gameEvent = MutableLiveData<GameEvent>()
     val gameEvent: LiveData<GameEvent> = _gameEvent
 
@@ -35,7 +35,7 @@ class GameViewModel(private val repository: GameRepository) : ViewModel() {
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> = _error
 
-    /** Inicializa el estado del juego */
+    // Inicializa el estado del juego
     fun initGame(roomId: String, roomCode: String, playerName: String) {
         _gameState.value = GameState(
             roomId = roomId,
@@ -45,7 +45,7 @@ class GameViewModel(private val repository: GameRepository) : ViewModel() {
         subscribeToEvents(roomId)
     }
 
-    /** Se suscribe a los eventos de la sala */
+    //Se suscribe a los eventos de la sala
     private fun subscribeToEvents(roomId: String) {
         try {
             // Crear el objeto Room
@@ -88,7 +88,7 @@ class GameViewModel(private val repository: GameRepository) : ViewModel() {
         }
     }
 
-    /** Maneja los eventos recibidos del servidor */
+    //Maneja los eventos recibidos del servidor si cambio de ronda, si el juego comenzo, el puntaje
     private fun handleGameEvent(event: GameEvent) {
         _gameEvent.postValue(event)
 
@@ -141,7 +141,7 @@ class GameViewModel(private val repository: GameRepository) : ViewModel() {
         }
     }
 
-    /** Inicia el juego */
+    // Inicia el juego
     fun startGame() {
         viewModelScope.launch {
             try {
@@ -156,7 +156,7 @@ class GameViewModel(private val repository: GameRepository) : ViewModel() {
         }
     }
 
-    /** Registra que el jugador tocó un objetivo */
+    // Registra que el jugador tocó un objetivo
     fun onTargetHit(target: Target) {
         viewModelScope.launch {
             try {
@@ -178,7 +178,7 @@ class GameViewModel(private val repository: GameRepository) : ViewModel() {
         }
     }
 
-    /** Guarda la partida en el historial local */
+    // Guarda la partida en el historial local
     private fun saveGameToHistory(endEvent: GameEvent.End) {
         viewModelScope.launch {
             try {
@@ -206,7 +206,7 @@ class GameViewModel(private val repository: GameRepository) : ViewModel() {
         }
     }
 
-    /** Obtiene el estado actual de la sala (útil para reconexión) */
+    // Obtiene el estado actual de la sala
     fun refreshRoomState() {
         viewModelScope.launch {
             try {

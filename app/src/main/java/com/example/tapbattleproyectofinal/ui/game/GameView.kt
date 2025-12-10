@@ -12,7 +12,7 @@ import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.random.Random
 
-/** Vista personalizada para dibujar el juego con Canvas */
+//Vista del canvas del juego completo
 class GameView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -53,7 +53,7 @@ class GameView @JvmOverloads constructor(
     private var pulseAnimator: ValueAnimator? = null
     private var pulseScale = 1f
 
-    // Colores del gradiente
+    // Colores del degradado
     private val colors = intArrayOf(
         Color.parseColor("#FF6B6B"),
         Color.parseColor("#4ECDC4"),
@@ -67,7 +67,7 @@ class GameView @JvmOverloads constructor(
         startParticleAnimation()
     }
 
-    /** Establece un nuevo objetivo */
+    // Establece un nuevo objetivo
     fun setTarget(target: Target?) {
         this.currentTarget = target
 
@@ -80,7 +80,7 @@ class GameView @JvmOverloads constructor(
         invalidate()
     }
 
-    /** Animación de pulso para el objetivo */
+    // Animación de pulso para el objetivo
     private fun startPulseAnimation() {
         pulseAnimator?.cancel()
         pulseAnimator = ValueAnimator.ofFloat(1f, 1.1f, 1f).apply {
@@ -100,7 +100,7 @@ class GameView @JvmOverloads constructor(
         pulseScale = 1f
     }
 
-    /** Dibuja el objetivo y efectos */
+    // Dibuja el objetivo y efectos
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
@@ -115,7 +115,7 @@ class GameView @JvmOverloads constructor(
         }
     }
 
-    /** Dibuja el objetivo con gradiente y efectos */
+    // Dibuja el objetivo con gradiente y efectos
     private fun drawTarget(canvas: Canvas, target: Target) {
         val progress = target.getLifeProgress()
         val radius = target.r * pulseScale
@@ -154,7 +154,7 @@ class GameView @JvmOverloads constructor(
         )
     }
 
-    /** Dibuja partículas decorativas */
+    //Dibuja las particulas
     private fun drawParticles(canvas: Canvas) {
         particles.forEach { particle ->
             particlePaint.color = particle.color
@@ -163,7 +163,7 @@ class GameView @JvmOverloads constructor(
         }
     }
 
-    /** Crea efecto de explosión cuando se toca un objetivo */
+    // Efecto de explosión cuando se toca un objetivo
     fun createExplosion(x: Float, y: Float, color: Int) {
         for (i in 0 until 20) {
             val angle = Random.nextDouble(0.0, 2 * Math.PI)
@@ -183,7 +183,7 @@ class GameView @JvmOverloads constructor(
         }
     }
 
-    /** Animación continua de partículas */
+    //Animación en el circulo que aparece
     private fun startParticleAnimation() {
         post(object : Runnable {
             override fun run() {
@@ -194,14 +194,14 @@ class GameView @JvmOverloads constructor(
         })
     }
 
-    /** Actualiza posiciones de partículas */
+    //Actualiza los circulos que aparecen
     private fun updateParticles() {
         val iterator = particles.iterator()
         while (iterator.hasNext()) {
             val particle = iterator.next()
             particle.update()
 
-            // Eliminar partículas muertas
+            // Eliminan los circulos que ya expiraron
             if (particle.isDead() ||
                 particle.x < 0 || particle.x > width ||
                 particle.y < 0 || particle.y > height) {
@@ -210,7 +210,7 @@ class GameView @JvmOverloads constructor(
         }
     }
 
-    /** Maneja toques en la pantalla */
+    // Maneja toques en la pantalla
     override fun onTouchEvent(event: MotionEvent): Boolean {
         if (event.action == MotionEvent.ACTION_DOWN) {
             val target = currentTarget
@@ -227,7 +227,7 @@ class GameView @JvmOverloads constructor(
         return super.onTouchEvent(event)
     }
 
-    /** Limpia recursos */
+    // Limpia recursos
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
         stopPulseAnimation()
@@ -235,7 +235,7 @@ class GameView @JvmOverloads constructor(
     }
 }
 
-/** Clase para partículas del efecto visual */
+//Clase para partículas del efecto visual
 private data class Particle(
     var x: Float,
     var y: Float,

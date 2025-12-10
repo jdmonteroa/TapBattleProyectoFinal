@@ -17,12 +17,16 @@ import com.example.tapbattleproyectofinal.viewmodel.LobbyViewModel
 
 class LobbyActivity : AppCompatActivity() {
 
+    // Binding para acceder a los elementos del layout
     private lateinit var binding: ActivityLobbyBinding
+
+    // Datos del jugador y la sala
     private lateinit var playerName: String
     private var roomId: String? = null
     private var roomCode: String? = null
     private var isCreator: Boolean = false
 
+    // ViewModel con factory manual para pasar el repositorio
     private val viewModel: LobbyViewModel by viewModels {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -36,18 +40,23 @@ class LobbyActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Inicializa el binding del layout
         binding = ActivityLobbyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Obtiene el nombre del jugador enviado desde la pantalla anterior
         playerName = intent.getStringExtra(Constants.EXTRA_PLAYER_NAME) ?: "Jugador"
 
         setupUI()
         observeViewModel()
     }
 
+    // Configura listeners y textos iniciales del lobby
     private fun setupUI() {
         binding.tvPlayerName.text = "Jugador: $playerName"
 
+        // Botón para unirse a una sala con código
         binding.btnJoinRoom.setOnClickListener {
             val code = binding.etRoomCode.text.toString().trim().uppercase()
 
@@ -60,17 +69,22 @@ class LobbyActivity : AppCompatActivity() {
             viewModel.joinRoom(code, playerName)
         }
 
+        // Botón para iniciar el juego (solo visible si eres el creador)
         binding.btnStartGame.setOnClickListener {
             startGame()
         }
     }
 
+    // Observa cambios del ViewModel y actualiza la UI
     private fun observeViewModel() {
+
+        // Loading: mostrar/ocultar progress bar
         viewModel.isLoading.observe(this) { isLoading ->
             binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
             binding.btnJoinRoom.isEnabled = !isLoading
         }
 
+        // Mostrar errores si ocurren
         viewModel.error.observe(this) { error ->
             error?.let {
                 Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
@@ -79,19 +93,23 @@ class LobbyActivity : AppCompatActivity() {
             }
         }
 
+        // Cuando se une correctamente a la sala
         viewModel.joinSuccess.observe(this) { success ->
             if (success) {
                 showWaitingRoom()
             }
         }
 
+        // Obtener el ID real de la sala desde el servidor
         viewModel.roomId.observe(this) { id ->
             roomId = id
         }
 
+        // Saber si es el creador para mostrar opciones especiales
         viewModel.isCreator.observe(this) { creator ->
             isCreator = creator
-            // Solo el creador ve el botón
+
+            // Mostrar botón de iniciar juego solo si es el creador
             binding.btnStartGame.visibility = if (creator) View.VISIBLE else View.GONE
 
             if (creator) {
@@ -101,6 +119,7 @@ class LobbyActivity : AppCompatActivity() {
             }
         }
 
+        // Actualizar conteo de jugadores en la sala
         viewModel.playersCount.observe(this) { count ->
             binding.tvWaitingText.text = if (isCreator) {
                 if (count >= 2) {
@@ -112,11 +131,11 @@ class LobbyActivity : AppCompatActivity() {
                 "Esperando que el creador inicie... ($count jugadores)"
             }
 
-            // Habilitar botón solo si hay 2+ jugadores Y eres creador
+            // Habilitar botón solo si hay 2 jugadores y eres creador
             binding.btnStartGame.isEnabled = (count >= 2 && isCreator)
         }
 
-        //Escuchar cuando el juego inicia
+        // Cuando el servidor indica que el juego inicia
         viewModel.gameStarted.observe(this) { started ->
             if (started) {
                 goToGame()
@@ -124,6 +143,7 @@ class LobbyActivity : AppCompatActivity() {
         }
     }
 
+    // Mostrar la tarjeta de "Sala en espera"
     private fun showWaitingRoom() {
         binding.cardWaiting.visibility = View.VISIBLE
         binding.tvRoomCodeDisplay.text = "Sala: $roomCode"
@@ -133,13 +153,13 @@ class LobbyActivity : AppCompatActivity() {
         Toast.makeText(this, "¡Conectado!", Toast.LENGTH_SHORT).show()
     }
 
+    // Llama a la API para iniciar el juego
     private fun startGame() {
         val id = roomId ?: return
-
-        // Llamar a startGame en el servidor
         viewModel.startGame()
     }
 
+    // Navega hacia GameActivity enviando roomID, roomCode y playerName
     private fun goToGame() {
         val id = roomId
         val code = roomCode

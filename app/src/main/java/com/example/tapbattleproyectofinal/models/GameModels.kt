@@ -14,7 +14,7 @@ data class Target(
     val spawnTime: Long = System.currentTimeMillis()
 ) {
 
-    //Verifica si el toque está dentro del círculo
+    //Verifica si el jugador toco en los limites del circulo
     fun containsPoint(x: Float, y: Float): Boolean {
         val dx = x - cx
         val dy = y - cy
@@ -28,7 +28,7 @@ data class Target(
         return System.currentTimeMillis() - spawnTime >= ttlMs
     }
 
-    //Obtiene el progreso de vida (0.0 a 1.0)
+    //Obtiene el progreso de vida del circulo
     fun getLifeProgress(): Float {
         val elapsed = System.currentTimeMillis() - spawnTime
         return (elapsed.toFloat() / ttlMs).coerceIn(0f, 1f)

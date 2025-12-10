@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.tapbattleproyectofinal.databinding.ActivityResultBinding
 import com.example.tapbattleproyectofinal.utils.Constants
 
-/** Pantalla de resultados finales */
+//Pantalla que muestra el resultado del juego
 class ResultActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityResultBinding

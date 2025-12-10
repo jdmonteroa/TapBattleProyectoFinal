@@ -19,9 +19,7 @@ import com.example.tapbattleproyectofinal.models.GameEvent
 import com.example.tapbattleproyectofinal.utils.Constants
 import com.example.tapbattleproyectofinal.viewmodel.GameViewModel
 
-/**
- * Actividad principal del juego donde ocurre la acción
- */
+
 class GameActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityGameBinding

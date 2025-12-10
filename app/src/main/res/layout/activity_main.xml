@@ -42,7 +42,7 @@
         android:layout_marginTop="300dp"
         android:layout_marginStart="100dp"/>
 
-    <!-- Logo del juego con efecto neón -->
+    <!-- Logo del juego-->
     <LinearLayout
         android:id="@+id/logoContainer"
         android:layout_width="wrap_content"
@@ -96,7 +96,7 @@
 
     </LinearLayout>
 
-    <!-- Card principal con efecto glassmorphism -->
+    <!-- Card principal-->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardMenu"
         android:layout_width="0dp"
@@ -122,7 +122,7 @@
             android:padding="32dp"
             android:gravity="center">
 
-            <!-- Input nombre con estilo espacial -->
+            <!-- Input para ingresar el nombre -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilPlayerName"
                 android:layout_width="match_parent"
@@ -151,7 +151,7 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Botón PLAY con efecto neón -->
+            <!-- Botón PLAY -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnPlay"
                 android:layout_width="match_parent"
@@ -172,7 +172,7 @@
                 app:strokeWidth="2dp"
                 android:elevation="12dp"/>
 
-            <!-- Botón HISTORIAL estilo outline -->
+            <!-- Botón HISTORIAL-->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnHistory"
                 android:layout_width="match_parent"

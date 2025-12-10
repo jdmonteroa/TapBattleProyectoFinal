@@ -22,7 +22,7 @@ abstract class GameDatabase : RoomDatabase() {
         private var INSTANCE: GameDatabase? = null
 
 
-        //Obtiene la instancia única de la base de datos (Singleton)
+        //Obtiene la instancia única de la base de datos
         fun getDatabase(context: Context): GameDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(

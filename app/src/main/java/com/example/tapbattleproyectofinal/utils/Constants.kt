@@ -25,10 +25,10 @@ object Constants {
 
     // Tipos de eventos de Parse
     object EventType {
-        const val START = "START"
-        const val SPAWN = "SPAWN"
-        const val SCORE = "SCORE"
-        const val END = "END"
+        const val START = "START" //Cuando comienza el juego
+        const val SPAWN = "SPAWN" //Cuando presionan los objetivos
+        const val SCORE = "SCORE" //Al momento de actualizar los puntajes
+        const val END = "END" //Cuando finaliza el juego
     }
 
     // Nombres de Cloud Functions

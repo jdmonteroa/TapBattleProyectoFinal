@@ -9,9 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tapbattleproyectofinal.data.GameEntity
 import com.example.tapbattleproyectofinal.databinding.ItemGameHistoryBinding
 
-/**
- * Adapter para mostrar el historial de partidas
- */
+//Adapter que nos ayuda mostrar el historial de partidas jugadas
 class HistoryAdapter : ListAdapter<GameEntity, HistoryAdapter.HistoryViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {

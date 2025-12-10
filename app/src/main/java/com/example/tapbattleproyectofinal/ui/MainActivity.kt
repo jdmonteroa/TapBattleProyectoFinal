@@ -7,9 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.tapbattleproyectofinal.databinding.ActivityMainBinding
 import com.example.tapbattleproyectofinal.utils.Constants
 
-/**
- * Pantalla principal de la aplicación
- */
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
